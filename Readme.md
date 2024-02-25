@@ -22,3 +22,7 @@ It's a layer built on the top of the Node js that helps manage servers and route
 
   # SchemaTypes
 While Mongoose schemas define the overall structure or shape of a document, SchemaTypes define the expected data type for individual fields (String, Number, Boolean, and so on).
+
+-> //app.on -> to check express is properly working or not after connecting to mongodb database
+
+// `${used for variable inject}`
