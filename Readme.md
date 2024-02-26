@@ -5,7 +5,7 @@ backend using javascript
   - [Model Link](https://app.eraser.io/workspace/YtPqZ1VogxGy1jzIDkzj)
 
 
-<<<<<<< HEAD
+
   
 =======
 
@@ -29,4 +29,16 @@ While Mongoose schemas define the overall structure or shape of a document, Sche
 -> //app.on -> to check express is properly working or not after connecting to mongodb database
 
 // `${used for variable inject}`
->>>>>>> 568c5df54f89d84841485bdff58ab846670d3821
+
+# cookie-parser ,  cors : are middle wares - for passing string type data
+
+//configuring core - using cors as middleware for passing strings something 
+>>` app.use(cors({
+    origin: process.env.CORS_ORIGIN,   //giving acess by setting origin of fronted
+    credentials: true
+})) ` 
+
+>> ** configuring json ** -  allowing json type data into backend
+** app.use(express.json({limit: "16kb"})) **
+
+>> for taking data from url ->
