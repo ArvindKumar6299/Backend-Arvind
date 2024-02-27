@@ -18,8 +18,8 @@ It is used to build a single page, multipage, and hybrid web application.
 It's a layer built on the top of the Node js that helps manage servers and routes.
 
 # Mongoose 
-- > to interact with our MongoDB database
-  > and Mongoose is used in Node application to interact with MongoDB without write complex queries. It acts as an Object Data Modeling (ODM) used to define schema model and provides easy communication between application and database. It provides many features like schema validation, middleware support, and easy query building It manages relationships between data, and is used to translate between objects in code and the representation of those objects in MongoDB.
+- ` to interact with our MongoDB database
+   and Mongoose is used in Node application to interact with MongoDB without write complex queries. It acts as an Object Data Modeling (ODM) used to define schema model and provides easy communication between application and database. It provides many features like schema validation, middleware support, and easy query building It manages relationships between data, and is used to translate between objects in code and the representation of those objects in MongoDB.`
   
 
 
@@ -33,12 +33,18 @@ While Mongoose schemas define the overall structure or shape of a document, Sche
 # cookie-parser ,  cors : are middle wares - for passing string type data
 
 //configuring core - using cors as middleware for passing strings something 
->>` app.use(cors({
+` app.use(cors({
     origin: process.env.CORS_ORIGIN,   //giving acess by setting origin of fronted
     credentials: true
 })) ` 
 
->> ** configuring json ** -  allowing json type data into backend
-** app.use(express.json({limit: "16kb"})) **
+ ` configuring json  -  allowing json type data into backend
+   app.use(express.json({limit: "16kb"})) `
 
->> for taking data from url ->
+ for taking data from url ->
+
+ + --Schema - is mtd which takes input as objects
+
+
+ ->  //this. - is used for access id ,email,etc from mogoodb data base where already saved
+  +   email: this.email, here - email is key_name and this.email -> is used for taking email which are aready saved in database
