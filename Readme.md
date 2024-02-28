@@ -51,3 +51,21 @@ While Mongoose schemas define the overall structure or shape of a document, Sche
 
 #multer
 -Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. It is written on top of busboy for maximum efficiency.  
+
+# HTTP - hyper text transfer protocol
+-> HTTP headers are - metadata -- keyvalue sent along with request and response
+- caching, authentication , manage state
++ Resquest Headers -> for client
++ Response Headers -> for server
++ Representation Headeres -> enconding/compression
++ Payload Headers -> data
+
+>> HTTP methods - basic set of operations that can be used to interact with server
++ GET: retrive a resource
++ HEAD: No message body (response headers only)
++ OPTIONS : what operations ate avilable
++ TRACE: loopback test (get same data)
++ DELETE: remove a resource
++ PUT : replace a resource
++  POST : interact with resource (mostly add)
++ PATCH : change part of a resource
