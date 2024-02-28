@@ -48,3 +48,6 @@ While Mongoose schemas define the overall structure or shape of a document, Sche
 
  ->  //this. - is used for access id ,email,etc from mogoodb data base where already saved
   +   email: this.email, here - email is key_name and this.email -> is used for taking email which are aready saved in database
+
+#multer
+-Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. It is written on top of busboy for maximum efficiency.  
