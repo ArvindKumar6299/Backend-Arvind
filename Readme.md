@@ -69,3 +69,46 @@ While Mongoose schemas define the overall structure or shape of a document, Sche
 + PUT : replace a resource
 +  POST : interact with resource (mostly add)
 + PATCH : change part of a resource
+
+#  Register User - steps:
+
+  import  { asyncHandler} from "../utils/asyncHandler.js"
+  import { apiError } from "../utils/apiError.js"
+  
+
+  1.-> get user details from frontend
+  example  -  const {fullName, email, username, password} = req.body
+  2. -> validation check - not empty
+  ex-> ` if(fullName === ""){
+        throw new apiError(400, "fullName is required")
+    } `
+    //for multiple validation check
+
+  `  if([fullName,email,username, password].some((field)=>
+    field?.trim() === "")){
+        return new apiError(400, "All fields are required!")
+    }`
+     ->trim() just removes any whitespace at the beginning and end of a string
+
+    2. -> check if user already exists: username, email
+
+    import {User} from "../models/user.model.js"
+    `
+    const existedUser = User.findOne({
+        $or: [{username} , {email}]
+    })
+    if(existedUser){
+        throw new apiError(409,"User with email or username already exists !!")
+    }
+    `
+    3. -> check for images, check for avatar
+    `
+     
+    `
+    //upload them to cloudinary, avatar
+    // create user object - create entry in db
+    // remove password and refresh teken field from response
+    // check for user creation 
+    // return response
+
+    >> [](user.controller.js)  --> check for full explanation steps above
