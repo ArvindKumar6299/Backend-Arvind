@@ -8,6 +8,8 @@ const registerUser = asyncHandler( async (req, res) =>{
      res.status(500).json({
         message: "ok! hai sab"
     })
+
+
     // get user details from frontend
     // validation - not empty
     // check if user already exists: username, email
@@ -31,19 +33,26 @@ const registerUser = asyncHandler( async (req, res) =>{
     }
    
     // check if user already exists: username, email
-    const existedUser = User.findOne({
+    const existedUser = await User.findOne({
         $or: [{username} , {email}]
     })
     if(existedUser){
         throw new apiError(409,"User with email or username already exists !!")
     }
     
+    // console.log(req.files);
+    
       // check for images, check for avatar
 
       //-- req.body() -- ke andar sara ka sara data ata hia
+
       // multer - req.files ka access deta hia
-     const avatarLocalPath =  req.file?.avatar[0]?.path;
-     const coverImageLocalPath = req.file?.converImage[0]?.path;
+     const avatarLocalPath =  req.files?.avatar[0]?.path;
+    //  const coverImageLocalPath = req.files?.converImage[0]?.path;
+    let coverImageLocalPath;
+    if(req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0){
+         coverImageLocalPath = req.files.coverImage[0].path
+    }
 
      if(!avatarLocalPath) {
         throw new apiError(400, "Avatar file is required")
@@ -59,10 +68,10 @@ const registerUser = asyncHandler( async (req, res) =>{
       }
 
       // create user object - create entry in db
-      const user = User.create({
+      const user = await User.create({
         fullName,
         avatar: avatar.url,
-        converImage: coverImage?.url || "",
+        coverImage: coverImage?.url || "",
         email,
         password,
         username: username.toLowerCase() 
@@ -81,10 +90,10 @@ const registerUser = asyncHandler( async (req, res) =>{
    
      // return response
      return res.status(201).json(
-        new apiResponse(200 , createdUser ,  "User registered sucessfully")
+        new apiResponse(200 , createdUser[0] ,  "User registered sucessfully")
      )
 
 })
 
 
-export {registerUser,}
+export {registerUser}
