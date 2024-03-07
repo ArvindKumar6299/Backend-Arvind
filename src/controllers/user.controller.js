@@ -204,7 +204,7 @@ const logoutUser = asyncHandler(async(req, res) =>{
 const refreshAccessToken = asyncHandler(async (req, res) =>{
   const incomingRefreshToken = req.cookie.refreshToken || req.body.refreshToken
 
-  if(incomingRefreshToken){
+  if(!incomingRefreshToken){
     throw new apiError(401,"uautorized request")
   }
 
